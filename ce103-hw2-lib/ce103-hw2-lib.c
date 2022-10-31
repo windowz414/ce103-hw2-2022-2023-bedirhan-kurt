@@ -1,12 +1,15 @@
-/****************************************************************************
+/*******************************************************************************************
  * Copyleft (L) 2021 CENG - All Rights Not Reserved
+ * Copyright (C) 2022 Beru "Stella" Hinode on behalf of Bedirhan KURT. All Rights Reserved.
  * You may use, distribute and modify this code.
- ****************************************************************************/
+
+ * SPDX-License-Identifier: GPL-2.0-only
+ *******************************************************************************************/
 
  /**
   * @file ce103-hw2-lib.c
-  * @author Ugur CORUH
-  * @date 28 November 2022
+  * @author Ugur CORUH & Beru Hinode
+  * @date 31 October 2022
   *
   * @brief <b> HW-2 Functions </b>
   *
