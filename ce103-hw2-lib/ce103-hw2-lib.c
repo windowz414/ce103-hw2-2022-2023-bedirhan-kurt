@@ -197,8 +197,34 @@ int ce103_fibonacciNumber(int fiIndex)
 **/
 char* ce103_strrev(char* fiStr)
 {
-	//TODO:Start from Here...
-	return 0;
+	// Initialize variables.
+	char tmp;
+	int i, j;
+
+	// Define variables.
+	i = 0;
+	j = ce103_strlen(fiStr) - 1;
+	while (i < j)
+	{
+		// Use the temporary char variable we initialized as middle-man.
+		tmp = fiStr[i];
+		fiStr[i] = fiStr[j];
+		fiStr[j] = tmp;
+		// Decrement temporary variable 'j'...
+		j--;
+
+		// ...as we increment 'i'.
+		i++;
+
+		// The approach for decrementing j while incrementing i
+		// is to replicate human behavior, as in, we would count
+		// from both left and right. Decrementing j is going from
+		// right to left, while incrementing i is going from left
+		// to right.
+	}
+
+	// Return the reversed string.
+	return (fiStr);
 }
 
 /**
