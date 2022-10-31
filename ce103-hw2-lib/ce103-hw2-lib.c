@@ -19,6 +19,7 @@
   *
   */
 
+#include <stdio.h>
 #include "ce103-hw2-lib.h"
 
   /**
@@ -149,8 +150,38 @@ int fnCE103HW2Lib(unsigned char* fia, int fib, char* fic)
 **/
 int ce103_fibonacciNumber(int fiIndex)
 {
-	//TODO:Start from Here...
-	return -1;
+
+        int i;
+
+	// Initialize first term.
+	int term1 = 0;
+
+	// Initialize second term.
+	int term2 = 1;
+
+	// Initialize next term (3rd).
+	// HACK: Do it the hard way.
+	int term3 = 1;
+
+	// The index is greater than or equals 3 at this point. Calculate the one asked here.
+	for (i = 2; i <= fiIndex; ++i) {
+		// Assign first term as second term.
+		term1 = term2;
+		// Then assign second term as third.
+		term2 = term3;
+		// Calculate next term.
+		term3 = term1 + term2;
+	}
+
+	if (fiIndex = 1) {
+		return term1;
+	}
+	else if (fiIndex = 2) {
+		return term2;
+	}
+	else {
+		return term3;
+	}
 }
 
 /**
