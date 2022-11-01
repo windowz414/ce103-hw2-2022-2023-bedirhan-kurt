@@ -9,4 +9,5 @@ if [ ! -f plantuml.jar ]; then
 fi
 java -jar "plantuml.jar" -v -o "$DOC_IMG_PATH_UML" "$SOURCE_DIR/**.(c|cpp|doc|h|puml)"
 $DOXYGEN_EXE Doxyfile
-pause
+echo -n "Press any key to continue ..."
+read
