@@ -279,9 +279,9 @@ int ce103_strlen(const char* fiStr)
 char* ce103_strcat(char* fiDest, char* fiSrc)
 {
     size_t i,j;
-    for (i = 0; dest[i] != '\0'; i++)
+    for (i = 0; fiDest[i] != '\0'; i++)
         ;
-    for (j = 0; src[j] != '\0'; j++)
+    for (j = 0; fiSrc[j] != '\0'; j++)
         fiDest[i+j] = fiSrc[j];
     fiDest[i+j] = '\0';
     return fiDest;
@@ -337,24 +337,24 @@ int ce103_strcmp(const char* fiLhs, const char* fiRhs)
 char* ce103_strcpy(char* foDestination, const char* fiSource)
 {
     // KEEP IT SAFE: Return if no memory is allocated to the destination.
-    if (fiDest == NULL) {
+    if (foDestination == NULL) {
         return NULL;
     }
 
     // Take a pointer pointing to the beginning of the destination string.
-    char *ptr = fiDest;
+    char *ptr = foDestination;
 
     // Copy the C-string pointed by source into the array
     // pointed by destination.
-    while (*fiSrc != '\0')
+    while (*fiSource != '\0')
     {
-        *fiDest = *fiSrc;
-        fiDest++;
-        fiSrc++;
+        *foDestination = *fiSource;
+        foDestination++;
+        fiSource++;
     }
 
     // Include the terminating null character as well.
-    *fiDest = '\0';
+    *foDestination = '\0';
 
     // The destination is returned as pointer.
     return ptr;
