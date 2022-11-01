@@ -310,8 +310,17 @@ char* ce103_strcat(char* fiDest, char* fiSrc)
 **/
 int ce103_strcmp(const char* fiLhs, const char* fiRhs)
 {
-	//TODO:Start from Here...
-	return -2;
+	unsigned char c1, c2;
+
+	while (1) {
+		c1 = *fiLhs++;
+		c2 = *fiRhs++;
+		if (c1 != c2)
+			return c1 < c2 ? -1 : 1;
+		if (!c1)
+			break;
+	}
+	return 0;
 }
 
 /**
