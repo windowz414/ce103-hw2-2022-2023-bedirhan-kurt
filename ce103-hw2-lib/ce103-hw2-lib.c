@@ -454,6 +454,34 @@ void ce103_bin2hex(unsigned char* fiBin, int fiBinLen, char* foHex)
 */
 int ce103_gcd(int fiNum1, int fiNum2)
 {
-	//TODO:Start from Here...
-	return -1;
+	unsigned long r = fiNum1 | fiNum2;
+
+	if (!fiNum1 || !fiNum2)
+		return r;
+
+	while (!(fiNum2 & r))
+		fiNum2 >>= 1;
+	if (fiNum2 == r)
+		return r;
+
+	for (;;) {
+		while (!(fiNum1 & r))
+			fiNum1 >>= 1;
+		if (fiNum1 == r)
+			return r;
+		if (fiNum1 == fiNum2)
+			return fiNum1;
+
+		if (fiNum1 < fiNum2) {
+			// TODO: Port swap() function from Linux.
+			int tempvar = fiNum2;
+			fiNum2 = fiNum1;
+			fiNum1 = tempvar;
+		}
+		fiNum1 -= fiNum2;
+		fiNum1 >>= 1;
+		if (fiNum1 & r)
+			fiNum1 += fiNum2;
+		fiNum1 >>= 1;
+	}
 }
