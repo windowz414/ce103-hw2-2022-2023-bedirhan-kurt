@@ -20,6 +20,7 @@
   */
 
 #include <stdio.h>
+#include <ctype.h>
 #include "ce103-hw2-lib.h"
 
   /**
@@ -353,6 +354,25 @@ char* ce103_strcpy(char* foDestination, const char* fiSource)
 }
 
 /**
+ * hex_to_bin - convert a hex digit to its real value
+ * @ch: ascii character represents hex digit
+ *
+ * hex_to_bin() converts one hex digit to its actual value or -1 in case of bad
+ * input.
+ *
+ * this piece from linux kernel is used as a middle man and should not be present to docs.
+ */
+int hex_to_bin(char ch)
+{
+	if ((ch >= '0') && (ch <= '9'))
+		return ch - '0';
+	ch = tolower(ch);
+	if ((ch >= 'a') && (ch <= 'f'))
+		return ch - 'a' + 10;
+	return -1;
+}
+
+/**
  * @name    hex2bin (ce103_hex2bin)
  * @brief   \b Hexadecimal to Binary (BCD)  Conversion
  *
@@ -367,8 +387,32 @@ char* ce103_strcpy(char* foDestination, const char* fiSource)
  */
 void ce103_hex2bin(char* fiHex, int fiHexLen, unsigned char* foBin)
 {
-	//TODO:Start from Here...
+	// While we decrement fiHexLen...
+	while (fiHexLen--) {
+		// Use hex_to_bin function above to add upper and lower bytes.
+		int hi = hex_to_bin(*fiHex++);
+		int lo = hex_to_bin(*fiHex++);
+
+		// If any of them are smaller then 0, return -1.
+		// Linux kernel rather returns something explicit to hardware. We don't have that.
+		// See lib/hexdump.c in Linux kernel for more info.
+		if ((hi < 0) || (lo < 0))
+			return -1;
+
+		// Add up to foBin pointer.
+		*foBin++ = (hi << 4) | lo;
+	}
+
+	// We're done here. Return success (status 0).
+	return 0;
 }
+
+/**
+ * hex byte pack definitions. these don't need docs.
+ * gathered from linux kernel. (lib/hexdump.c)
+ */
+const char hex_asc[] = "0123456789abcdef";
+const char hex_asc_upper[] = "0123456789ABCDEF";
 
 /**
 * @name    bin2hex (ce103_bin2hex)
@@ -383,7 +427,15 @@ void ce103_hex2bin(char* fiHex, int fiHexLen, unsigned char* foBin)
 */
 void ce103_bin2hex(unsigned char* fiBin, int fiBinLen, char* foHex)
 {
-	//TODO:Start from Here...
+	// First assign binary entry to pointer.
+	const unsigned char *_fiBin = fiBin;
+
+	// Then let's do the conversion using hex_byte_pack function in the header.
+	while (fiBinLen--)
+		 foHex = hex_byte_pack(foHex, *_fiBin++);
+
+	// We're done here. Return HEX value.
+	return foHex;
 }
 
 
