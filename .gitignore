@@ -486,3 +486,9 @@ FodyWeavers.xsd
 *.sln.iml
 
 *.jar
+
+##### Manually added entries #####
+
+# Possible exports of GPG keys
+*.asc
+*.gpg
