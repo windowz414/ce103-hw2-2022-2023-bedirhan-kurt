@@ -332,8 +332,28 @@ int ce103_strcmp(const char* fiLhs, const char* fiRhs)
 **/
 char* ce103_strcpy(char* foDestination, const char* fiSource)
 {
-	//TODO:Start from Here...
-	return 0;
+    // KEEP IT SAFE: Return if no memory is allocated to the destination.
+    if (fiDest == NULL) {
+        return NULL;
+    }
+
+    // Take a pointer pointing to the beginning of the destination string.
+    char *ptr = fiDest;
+
+    // Copy the C-string pointed by source into the array
+    // pointed by destination.
+    while (*fiSrc != '\0')
+    {
+        *fiDest = *fiSrc;
+        fiDest++;
+        fiSrc++;
+    }
+
+    // Include the terminating null character as well.
+    *fiDest = '\0';
+
+    // The destination is returned as pointer.
+    return ptr;
 }
 
 /**
