@@ -161,8 +161,7 @@ int ce103_fibonacciNumber(int fiIndex)
 	int term2 = 1;
 
 	// Initialize next term (3rd).
-	// HACK: Do it the hard way.
-	int term3 = 1;
+	int term3 = term1 + term2;
 
 	// The index is greater than or equals 3 at this point. Calculate the one asked here.
 	for (i = 2; i <= fiIndex; ++i) {
