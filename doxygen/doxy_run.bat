@@ -6,5 +6,5 @@ SET DOC_IMG_PATH=../doxygen/Resources
 :: SET STRIP_PATH="C:xx"
 IF NOT EXIST plantuml.jar ( curl -L -o plantuml.jar "https://github.com/plantuml/plantuml/releases/download/v1.2021.14/plantuml-1.2021.14.jar" )
 java -jar "plantuml.jar" -v -o "%DOC_IMG_PATH_UML%" "%SOURCE_DIR%/**.(c|cpp|doc|h|puml)"
-%DOXYGEN_EXE% Doxyfile
+%DOXYGEN_RUN% Doxyfile
 pause
